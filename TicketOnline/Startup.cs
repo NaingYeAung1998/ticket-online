@@ -44,8 +44,8 @@ namespace TicketOnline
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = "2442850592459029";
-                facebookOptions.AppSecret = "16d43555e0ada81dcbef682fd746fbce";
+                facebookOptions.AppId = "412709069417521";
+                facebookOptions.AppSecret = "aea0d05d02d5e8f3a8eb49ee5dea9ebb";
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

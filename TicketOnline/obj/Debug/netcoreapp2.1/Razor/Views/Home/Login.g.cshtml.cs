@@ -73,7 +73,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("\r\n<div align=\"center\">\r\n    <br />\r\n    <h6>Get access to purchase tickets online</h6>\r\n    <br />\r\n    ");
             EndContext();
             BeginContext(237, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f234098271ca47f6b10cfab8ae5609dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "08bd22f30a174b119b74f7749e673ecb", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -121,7 +121,7 @@ WriteAttributeValue("", 595, provider.Name, 595, 14, false);
             WriteLiteral(" name=\"provider\"/>\r\n                ");
             EndContext();
             BeginContext(646, 321, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90a1b117d6414a95b25d004ef5e133a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5665d924b9c94b33a0b44422cee36f18", async() => {
                 BeginContext(787, 43, true);
                 WriteLiteral("\r\n                    <button type=\"submit\"");
                 EndContext();
