@@ -1,0 +1,45 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "OrderIndex";
+}
+
+<br />
+<div class="row"  style="color:#999">
+    <div class="col-md-6" style="height:300px;">
+        <div style="background-image:url(/img/profile.jpg);background-position:center;background-size:cover;width:90%;height:100%"></div>
+    </div>
+    <div class="col-md-6">
+        <h4>Customer Information</h4>
+
+        <h6>Name - @Model.FirstOrDefault().Customer.Name</h6>
+        <h6>Email - @Model.FirstOrDefault().Customer.Email</h6>
+        <h6>Phone - @Model.FirstOrDefault().Customer.Phone</h6>
+    </div>
+</div>
+<br />
+<hr style="background-color:white" />
+<br />
+<h4>Your Orders</h4>
+<br />
+@foreach (var order in Model)
+{
+    <br />
+    <div class="row"  style="color:#999">
+        <div class="col-md-8" style="height:250px;">
+            <div style="background-image:url(/img/posts/@order.Ticket.CoverPhoto);background-position:center;background-size:cover;width:90%;height:100%"></div>
+        </div>
+        <div class="col-md-4">
+            <h4>Order Info</h4>
+            <h6>@order.Ticket.Name</h6>
+            <h6>Price Per Ticket - @order.Ticket.Price ks</h6>
+            <h6>Ticket Qty - @order.Qty</h6>
+            <h6>Order Date - @order.CreatedOn</h6>
+            <hr style="background-color:white" />
+            <h6>Order No - @order.OrderNo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @order.Cost ks</h6>
+        </div>
+
+    </div>
+    <br />
+    <hr />
+    @*<hr style="background-color:white" />*@
+}

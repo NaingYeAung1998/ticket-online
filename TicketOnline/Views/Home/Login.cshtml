@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div align="center">
+    <br />
+    <h6>Get access to purchase tickets online</h6>
+    <br />
+    <img src="~/img/ticket.jpg" width="300" height="400" />
+    <br />
+    <br />
+    @{
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        if (loginProviders.Count() != 0)
+        {
+            @foreach (var provider in loginProviders)
+            {
+                <input type="hidden" value="@provider.Name" name="provider"/>
+                <form asp-controller="account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <button type="submit" value="@provider.Name" class="btn" style="background-color:#3C5A99;color:white">Continue With Facebook</button>
+                </form>
+            }
+        }
+    }
+</div>

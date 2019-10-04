@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div>
+        <br />
+        <hr />
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div style="width:100%;height:500px;background-image:url(/img/edm.jpg);background-size:cover"></div>
+                </div>
+                <div class="carousel-item">
+                    <div style="width:100%;height:500px;background-image:url(/img/edm2.jpg);background-size:cover"></div>
+                </div>
+                <div class="carousel-item">
+                    <div style="width:100%;height:500px;background-image:url(/img/edm3.jpg);background-size:cover"></div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <hr />
+        <h3 style="text-align:center;color:white">GET UNLIMITED PURCHASE TO ALL TICKETS</h3>
+        <hr />
+        <h4 style="color:#DC143C">Upcoming Events</h4>
+        <hr />
+        <div class="row">
+            @foreach (var evt in ViewBag.Upcomings)
+            {
+                <div class="col-md-6">
+                    <a href="/home/ticketdetail?id=@evt.Id">
+                        <div style="width:100%;height:400px;background-image:url(/img/posts/@evt.CoverPhoto);background-size:cover"></div>
+                    </a>
+                </div>
+            }
+
+        </div>
+        <hr />
+        <h4 style="color:#DC143C">Hot Ticket Deals</h4>
+        <hr />
+        <div class="row">
+            @foreach (var tic in ViewBag.Tickets)
+            {
+                <div class="col-md-4">
+                    <a href="/home/ticketdetail?id=@tic.Id">
+                        <div style="width:100%;height:400px;background-image:url(/img/posts/@tic.TicketPhoto);background-size:cover"></div>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>

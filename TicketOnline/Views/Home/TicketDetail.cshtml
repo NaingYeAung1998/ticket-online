@@ -1,0 +1,79 @@
+﻿@model Ticket
+@{
+    ViewData["Title"] = "TicketDetail";
+}
+<br />
+<h2>@Model.Name</h2>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div style="width:100%;height:400px;background-image:url(/img//posts/@Model.CoverPhoto);background-size:cover;background-position:center"></div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:80%;height:400px;background-image:url(/img//posts/@Model.TicketPhoto);background-size:cover;background-position:center"></div>
+    </div>
+    <div class="col-md-6">
+        <h6>@Model.Name</h6>
+        <p>@Model.Description</p>
+        <p>@Model.CreatedOn.Date</p>
+        <p>@Model.Price ks</p>
+        <p>@Model.Qty tickets left</p>
+        <hr />
+        <h4>Order</h4>
+        <form asp-action="order" asp-controller="customer" method="post">
+            <input type="hidden" name="TicketId" value="@Model.Id" />
+            <input type="hidden" value="@Model.Price" id="price" />
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Qty</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="qty" name="Qty" onchange="changeQty()" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Total</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" readonly name="Cost" id="cost" />
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-danger" type="submit">Purchase</button>
+        </form>
+
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12" style="height:300px">
+        <div id="map" style="width:100%;height:100%"></div>
+    </div>
+</div>
+
+<script>
+    function changeQty() {
+        var price = $("#price").val();
+        var qty = $("#qty").val();
+
+        $("#cost").val(price * qty);
+    }
+
+    function initMap() {
+        // The location of Uluru
+        var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), { zoom: 4, center: uluru });
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({ position: uluru, map: map });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN8gOzTMRcSgcN3cscIN1zNNQAWGk9bu0&callback=initMap">
+</script>

@@ -1,0 +1,22 @@
+﻿@model List<Ticket>
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+@*<h2>All Tickets</h2>*@
+
+<hr />
+<div class="row">
+
+        @foreach (var ticket in Model)
+        {
+            <div class="col-md-4" style="height:400px">
+                <a href="/home/TicketDetail?id=@ticket.Id">
+                    <div style="width:90%;height:300px;background-size:cover;background-position:center;background-image:url(/img/posts/@ticket.TicketPhoto)"></div>
+                </a>       
+                <h5>@ticket.Name</h5>
+            </div>
+        }
+
+
+</div>

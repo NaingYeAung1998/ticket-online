@@ -1,0 +1,34 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="row">
+    <div class="col-md-10">
+        <h2>Orders</h2>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-default" href="/ticket/index" style="color:white">Back to Index</a>
+    </div>
+</div>
+
+<hr />
+@foreach(var order in Model)
+{
+    <div class="row">
+        <div class="col-md-6" style="height:250px;">
+            <div style="background-image:url(/img/posts/@order.Ticket.TicketPhoto);background-position:center;background-size:cover;width:90%;height:100%"></div>
+        </div>
+        <div class="col-md-6">
+            <h4>OrderNo - @order.OrderNo</h4>
+            <h6>Customer Name - @order.Customer.Name</h6>
+            <h6>Customer Email - @order.Customer.Email</h6>
+            <h6>Ticket Name - @order.Ticket.Name</h6>
+            <h6>Ticket Price - @order.Ticket.Price</h6>
+            <h6>Qty - @order.Qty</h6>
+            <h6>Total Cost - @order.Cost</h6>
+        </div>
+    </div>
+    <br />
+    <br />
+}

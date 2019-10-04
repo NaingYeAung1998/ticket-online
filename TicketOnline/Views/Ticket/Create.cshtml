@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-10">
+        <h2>Create Ticket</h2>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-default" href="/ticket/index" style="color:white">Back to Index</a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label>Name</label>
+        <input type="text" name="name" id="name" class="form-control" />
+        <br />
+        <label>Description</label>
+        <input type="text" name="description" id="description" class="form-control" />
+        <br />
+        <label>Event Date</label>
+        <input type="date" name="eventDate" id="eventDate" class="form-control" />
+        <br />
+        <label>Price</label>
+        <input type="number" name="price" id="price" class="form-control" />
+        <br />
+        <label>Qty</label>
+        <input type="number" name="qty" id="qty" class="form-control" />
+        <br />
+        <label>Latitude</label>
+        <input type="text" name="latitude" id="latitude" class="form-control" />
+        <br />
+        <label>Longitude</label>
+        <input type="text" name="longitude" id="longitude" class="form-control" />
+        <br />
+        <label>Cover Photo</label>
+        <input type="file" class="form-control" name="coverPhoto" id="coverPhoto" onchange="changeCover()" />
+        <br />
+        <label>Ticket Photo</label>
+        <input type="file" class="form-control" name="ticketPhoto" id="ticketPhoto" onchange="changeTicket()" />
+    </div>
+</div>
+
+<br />
+
+<button class="btn btn-primary" onclick="createTicket()">Create</button>
+
+@section Scripts{
+    <script>
+        var coverPhoto = "";
+        var ticketPhoto = "";
+
+        function readImage(input) {
+            var reader = new FileReader();
+            reader.readAsDataURL(input);
+            reader.onload = function (e) {
+                return e.target.result;
+            }
+        }
+
+        function changeCover() {
+            var cover = document.getElementById('coverPhoto').files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(cover);
+            reader.onload = function (e) {
+                coverPhoto = e.target.result;
+            }
+        }
+
+        function changeTicket() {
+            var ticket = document.getElementById('ticketPhoto').files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(ticket);
+            reader.onload = function (e) {
+                ticketPhoto = e.target.result;
+            }
+        }
+
+        function createTicket() {
+            var name = $("#name").val();
+            var description = $("#description").val();
+            var eventDate = $("#eventDate").val();
+            var price = $("#price").val();
+            var qty = $("#qty").val();
+            var latitude = $("#latitude").val();
+            var longitude = $("#longitude").val();
+
+            const model = {
+                name,
+                description,
+                eventDate,
+                price,
+                qty,
+                latitude,
+                longitude,
+                coverPhoto,
+                ticketPhoto
+            };
+
+            $.ajax({
+                url: "create",
+                type: "POST",
+                accepts: "application/json",
+                contentType: "application/json",
+                data: JSON.stringify(model),
+                success: function () {
+                    location.href = "index"
+                }
+            })
+
+            console.log(model);
+        }
+    </script>
+}

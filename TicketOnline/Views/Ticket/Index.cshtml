@@ -1,0 +1,29 @@
+﻿@model List<TicketOnline.Models.Ticket>
+@{
+    ViewData["Title"] = "Index";
+}
+    <br />
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Index</h2>
+        </div>
+        <div class="col-md-4">
+            <a class="btn" style="background-color:white;color:black" href="create">Create New</a>
+            <a class="btn btn-danger"  href="/ticket/orders">Check Orders</a>
+        </div>
+    </div>
+
+<br />
+<div class="row">
+    @foreach(var ticket in Model)
+    {
+    <div class="col-md-4">
+        <div style="width:90%;height:300px;background-size:cover;background-position:center;background-image:url(/img/posts/@ticket.TicketPhoto)"></div>
+        <h5>@ticket.Name</h5>
+        <hr />
+        <br />
+    </div>
+    
+    }
+    
+</div>
